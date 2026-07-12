@@ -94,21 +94,21 @@ export default function InspectionChecklist({ groupedAnswers, inspectionId, proj
         const answeredItems = group.answers.filter((a: any) => a.status).length;
         
         return (
-          <div key={group.category.id} className="border border-gray-200 rounded-xl overflow-hidden bg-white">
+          <div key={group.category.id} className="border border-slate-700/50 rounded-xl overflow-hidden bg-slate-800">
             <button 
               onClick={() => setExpandedCategory(isExpanded ? null : group.category.id)}
-              className="w-full flex items-center justify-between p-4 bg-gray-50/50 hover:bg-gray-50 transition-colors text-left"
+              className="w-full flex items-center justify-between p-4 bg-slate-800 hover:bg-slate-700/50 transition-colors text-left"
             >
               <div>
-                <h3 className="font-bold text-gray-900">{group.category.name}</h3>
-                <p className="text-sm text-gray-500 mt-1">{group.category.description}</p>
+                <h3 className="font-bold text-slate-100">{group.category.name}</h3>
+                <p className="text-sm text-slate-400 mt-1">{group.category.description}</p>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full">
+                <span className="text-sm font-semibold text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-700/50">
                   {answeredItems} / {totalItems}
                 </span>
                 <svg 
-                  className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
+                  className={`w-5 h-5 text-slate-500 transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
                   fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -117,26 +117,26 @@ export default function InspectionChecklist({ groupedAnswers, inspectionId, proj
             </button>
 
             {isExpanded && (
-              <div className="divide-y divide-gray-100 p-2">
+              <div className="divide-y divide-slate-700/50 p-2 bg-slate-900/20">
                 {group.items.map((item: any) => {
                   const answer = group.answers.find((a: any) => a.item_id === item.id);
                   const status = answer?.status;
                   
                   return (
-                    <div key={item.id} className="p-4 hover:bg-gray-50/50 rounded-lg transition-colors flex flex-col md:flex-row md:items-start gap-4">
+                    <div key={item.id} className="p-4 hover:bg-slate-700/20 rounded-lg transition-colors flex flex-col md:flex-row md:items-start gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <span className={`px-2 py-0.5 text-[10px] font-bold rounded ${
-                            item.riskLevel === 'CRITICAL' ? 'bg-red-100 text-red-700' :
-                            item.riskLevel === 'HIGH' ? 'bg-orange-100 text-orange-700' :
-                            item.riskLevel === 'MEDIUM' ? 'bg-yellow-100 text-yellow-700' :
-                            'bg-blue-100 text-blue-700'
+                            item.riskLevel === 'CRITICAL' ? 'bg-red-900/30 text-red-400 border border-red-500/20' :
+                            item.riskLevel === 'HIGH' ? 'bg-orange-900/30 text-orange-400 border border-orange-500/20' :
+                            item.riskLevel === 'MEDIUM' ? 'bg-yellow-900/30 text-yellow-400 border border-yellow-500/20' :
+                            'bg-blue-900/30 text-blue-400 border border-blue-500/20'
                           }`}>
                             {item.riskLevel}
                           </span>
                         </div>
-                        <h4 className="text-gray-900 font-medium mb-1">{item.text}</h4>
-                        <p className="text-sm text-gray-500">{item.description}</p>
+                        <h4 className="text-slate-200 font-medium mb-1">{item.text}</h4>
+                        <p className="text-sm text-slate-500">{item.description}</p>
                         
                         {/* Note Input */}
                         <div className="mt-3">
@@ -145,7 +145,7 @@ export default function InspectionChecklist({ groupedAnswers, inspectionId, proj
                             placeholder="Not ekle..." 
                             defaultValue={answer?.note || ''}
                             onBlur={(e) => handleUpdateNote(answer?.id, item.id, e.target.value)}
-                            className="w-full text-sm px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
+                            className="w-full text-sm px-3 py-2 bg-slate-900/50 border border-slate-700/50 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-slate-200 outline-none transition-all placeholder:text-slate-600"
                           />
                         </div>
                       </div>
@@ -156,8 +156,8 @@ export default function InspectionChecklist({ groupedAnswers, inspectionId, proj
                           onClick={() => handleUpdateStatus(answer?.id, item.id, 'PASS')}
                           className={`px-4 py-2 text-sm font-semibold rounded-lg border transition-all ${
                             status === 'PASS' 
-                              ? 'bg-green-500 text-white border-green-500 shadow-md shadow-green-200' 
-                              : 'bg-white text-gray-600 border-gray-200 hover:border-green-500 hover:text-green-600'
+                              ? 'bg-green-600 text-white border-green-500 shadow-md shadow-green-900/20' 
+                              : 'bg-slate-800 text-slate-400 border-slate-700/50 hover:border-green-500 hover:text-green-500 hover:bg-green-500/10'
                           } ${updating === item.id ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                           {updating === item.id ? '...' : 'UYGUN'}
@@ -167,8 +167,8 @@ export default function InspectionChecklist({ groupedAnswers, inspectionId, proj
                           onClick={() => handleUpdateStatus(answer?.id, item.id, 'FAIL')}
                           className={`px-4 py-2 text-sm font-semibold rounded-lg border transition-all ${
                             status === 'FAIL' 
-                              ? 'bg-red-500 text-white border-red-500 shadow-md shadow-red-200' 
-                              : 'bg-white text-gray-600 border-gray-200 hover:border-red-500 hover:text-red-600'
+                              ? 'bg-red-600 text-white border-red-500 shadow-md shadow-red-900/20' 
+                              : 'bg-slate-800 text-slate-400 border-slate-700/50 hover:border-red-500 hover:text-red-500 hover:bg-red-500/10'
                           } ${updating === item.id ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                           {updating === item.id ? '...' : 'UYGUN DEĞİL'}
@@ -178,8 +178,8 @@ export default function InspectionChecklist({ groupedAnswers, inspectionId, proj
                           onClick={() => handleUpdateStatus(answer?.id, item.id, 'NOT_APPLICABLE')}
                           className={`px-4 py-2 text-sm font-semibold rounded-lg border transition-all ${
                             status === 'NOT_APPLICABLE' 
-                              ? 'bg-gray-500 text-white border-gray-500 shadow-md shadow-gray-200' 
-                              : 'bg-white text-gray-600 border-gray-200 hover:border-gray-500 hover:text-gray-600'
+                              ? 'bg-slate-600 text-white border-slate-500 shadow-md shadow-slate-900/20' 
+                              : 'bg-slate-800 text-slate-400 border-slate-700/50 hover:border-slate-500 hover:text-slate-300 hover:bg-slate-700/50'
                           } ${updating === item.id ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                           {updating === item.id ? '...' : 'İLGİSİZ'}

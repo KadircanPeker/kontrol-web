@@ -33,8 +33,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6">
-        <h1 className="text-2xl font-bold text-gray-800 mb-4">Proje Bulunamadı</h1>
+      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-6">
+        <h1 className="text-2xl font-bold text-slate-100 mb-4">Proje Bulunamadı</h1>
         <Link href="/" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
           Geri Dön
         </Link>
@@ -43,25 +43,25 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
   }
 
   return (
-    <div className="min-h-screen bg-gray-50/50 p-6 md:p-12">
+    <div className="min-h-screen bg-slate-900 p-6 md:p-12">
       <div className="max-w-5xl mx-auto">
         <div className="mb-8 flex items-center justify-between">
-          <Link href="/" className="flex items-center text-blue-600 hover:text-blue-800 font-medium bg-blue-50/50 px-4 py-2 rounded-xl transition-colors">
+          <Link href="/" className="flex items-center text-blue-400 hover:text-blue-300 font-medium bg-blue-500/10 hover:bg-blue-500/20 px-4 py-2 rounded-xl transition-colors border border-blue-500/20 shadow-sm">
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Tüm Projelere Dön
           </Link>
-          <span className="px-4 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold shadow-sm">
+          <span className="px-4 py-1.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full text-sm font-semibold shadow-sm">
             {project.building_type}
           </span>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-[0_2px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 p-8">
-          <div className="border-b border-gray-100 pb-6 mb-6">
-            <h1 className="text-3xl font-extrabold text-gray-900 mb-2">{project.name}</h1>
-            <div className="flex items-center text-gray-500 font-medium">
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="bg-slate-800/80 backdrop-blur-xl rounded-2xl shadow-xl shadow-black/20 border border-slate-700/50 p-8">
+          <div className="border-b border-slate-700/50 pb-6 mb-6">
+            <h1 className="text-3xl font-extrabold text-slate-100 mb-2">{project.name}</h1>
+            <div className="flex items-center text-slate-400 font-medium">
+              <svg className="w-5 h-5 mr-2 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
