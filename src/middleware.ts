@@ -56,15 +56,15 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Protect all routes except /login
-  if (!user && !request.nextUrl.pathname.startsWith('/login')) {
+  // Protect all routes except /login and /register
+  if (!user && !request.nextUrl.pathname.startsWith('/login') && !request.nextUrl.pathname.startsWith('/register')) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // If user is logged in, redirect away from /login
-  if (user && request.nextUrl.pathname.startsWith('/login')) {
+  // If user is logged in, redirect away from /login and /register
+  if (user && (request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register'))) {
     const url = request.nextUrl.clone()
     url.pathname = '/'
     return NextResponse.redirect(url)
