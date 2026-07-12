@@ -25,7 +25,7 @@ export default async function InspectionDetail({ params }: { params: Promise<{ i
   const [projectRes, inspectionRes, answersRes] = await Promise.all([
     supabase.from('projects').select('*').eq('id', projectId).single(),
     supabase.from('inspections').select('*').eq('id', inspectionId).single(),
-    supabase.from('inspection_answers').select('*').eq('inspection_id', inspectionId)
+    supabase.from('inspection_answers').select('*, inspection_photos(*)').eq('inspection_id', inspectionId)
   ]);
 
   const project = projectRes.data;

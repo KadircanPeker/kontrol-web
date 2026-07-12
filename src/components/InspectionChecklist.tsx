@@ -86,6 +86,48 @@ export default function InspectionChecklist({ groupedAnswers, inspectionId, proj
     }
   };
 
+  const handleUploadPhoto = async (answerId: string | undefined, itemId: string, file: File) => {
+    setUpdating(itemId + '_photo');
+    try {
+      let currentAnswerId = answerId;
+      
+      if (!currentAnswerId) {
+        const { data, error } = await supabase.from('inspection_answers').insert([{
+          inspection_id: inspectionId,
+          item_id: itemId,
+          created_at: Date.now(),
+          updated_at: Date.now()
+        }]).select().single();
+        if (error) throw error;
+        currentAnswerId = data.id;
+      }
+
+      const sanitizedFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_').toLowerCase();
+      const photoPath = `${inspectionId}/${Date.now()}_${sanitizedFileName}`;
+      
+      const { error: uploadError } = await supabase.storage
+        .from('photos')
+        .upload(photoPath, file, { cacheControl: '3600', upsert: false });
+        
+      if (uploadError) throw uploadError;
+
+      const { error: dbError } = await supabase.from('inspection_photos').insert([{
+        answer_id: currentAnswerId,
+        photo_path: photoPath,
+        created_at: Date.now()
+      }]);
+      
+      if (dbError) throw dbError;
+
+      router.refresh();
+    } catch (err: any) {
+      alert("Fotoğraf yüklenirken hata oluştu: " + err.message);
+      console.error(err);
+    } finally {
+      setUpdating(null);
+    }
+  };
+
   return (
     <div className="space-y-4">
       {groupedAnswers.map(group => {
@@ -147,6 +189,48 @@ export default function InspectionChecklist({ groupedAnswers, inspectionId, proj
                             onBlur={(e) => handleUpdateNote(answer?.id, item.id, e.target.value)}
                             className="w-full text-sm px-3 py-2 bg-slate-900/50 border border-slate-700/50 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-slate-200 outline-none transition-all placeholder:text-slate-600"
                           />
+                        </div>
+
+                        {/* Photos */}
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {answer?.inspection_photos?.map((photo: any) => (
+                            <a key={photo.id} href={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/photos/${photo.photo_path}`} target="_blank" rel="noreferrer">
+                              <img 
+                                src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/photos/${photo.photo_path}`} 
+                                alt="Denetim Fotoğrafı" 
+                                className="w-16 h-16 object-cover rounded-lg border border-slate-700 hover:opacity-80 transition-opacity shadow-sm"
+                              />
+                            </a>
+                          ))}
+                          
+                          <label className={`w-16 h-16 flex flex-col items-center justify-center bg-slate-800 border border-dashed border-slate-600 rounded-lg cursor-pointer hover:bg-slate-700/50 hover:border-slate-400 transition-colors ${updating === item.id + '_photo' ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                            {updating === item.id + '_photo' ? (
+                              <svg className="animate-spin w-5 h-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                              </svg>
+                            ) : (
+                               <>
+                                 <svg className="w-6 h-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                 </svg>
+                                 <span className="text-[10px] text-slate-400 mt-1">Ekle</span>
+                               </>
+                            )}
+                            <input 
+                              type="file" 
+                              accept="image/*, capture=camera" 
+                              className="hidden" 
+                              disabled={updating === item.id + '_photo'}
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  handleUploadPhoto(answer?.id, item.id, file);
+                                }
+                              }}
+                            />
+                          </label>
                         </div>
                       </div>
 
