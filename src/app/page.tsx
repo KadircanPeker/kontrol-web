@@ -21,7 +21,7 @@ export default async function Home() {
   const { data: projects } = await supabase.from('projects').select('*').order('created_at', { ascending: false });
 
   return (
-    <div className="min-h-screen bg-gray-50/50 p-8">
+    <div className="min-h-screen bg-slate-50 p-8">
       <div className="max-w-7xl mx-auto">
         <Dashboard initialProjects={projects || []} />
       </div>

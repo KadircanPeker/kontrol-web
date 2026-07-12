@@ -114,68 +114,68 @@ export default function ProjectModal({ isOpen, onClose, projectToEdit }: { isOpe
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Proje Adı<span className="text-red-500 ml-1">*</span></label>
-            <input required type="text" value={formData.name} onChange={e => set('name', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Örn: Güneş Evleri Sitesi" />
+            <label className="block text-sm font-medium text-slate-700 mb-1">Proje Adı<span className="text-red-500 ml-1">*</span></label>
+            <input required type="text" value={formData.name} onChange={e => set('name', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Örn: Güneş Evleri Sitesi" />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Adres<span className="text-red-500 ml-1">*</span></label>
-            <input required type="text" value={formData.address} onChange={e => set('address', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Mahalle, Sokak, No..." />
+            <label className="block text-sm font-medium text-slate-700 mb-1">Adres<span className="text-red-500 ml-1">*</span></label>
+            <input required type="text" value={formData.address} onChange={e => set('address', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Mahalle, Sokak, No..." />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">İl<span className="text-red-500 ml-1">*</span></label>
-              <input required type="text" value={formData.city} onChange={e => set('city', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Örn: Ankara" />
+              <label className="block text-sm font-medium text-slate-700 mb-1">İl<span className="text-red-500 ml-1">*</span></label>
+              <input required type="text" value={formData.city} onChange={e => set('city', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Örn: Ankara" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">İlçe<span className="text-red-500 ml-1">*</span></label>
-              <input required type="text" value={formData.district} onChange={e => set('district', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Örn: Çankaya" />
+              <label className="block text-sm font-medium text-slate-700 mb-1">İlçe<span className="text-red-500 ml-1">*</span></label>
+              <input required type="text" value={formData.district} onChange={e => set('district', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Örn: Çankaya" />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Ada</label>
-              <input type="text" value={formData.ada} onChange={e => set('ada', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Ada numarası" />
+              <label className="block text-sm font-medium text-slate-700 mb-1">Ada</label>
+              <input type="text" value={formData.ada} onChange={e => set('ada', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Ada numarası" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Parsel</label>
-              <input type="text" value={formData.parsel} onChange={e => set('parsel', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Parsel numarası" />
+              <label className="block text-sm font-medium text-slate-700 mb-1">Parsel</label>
+              <input type="text" value={formData.parsel} onChange={e => set('parsel', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Parsel numarası" />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Yapı Türü</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Yapı Türü</label>
             <select
               value={formData.building_type}
               onChange={e => set('building_type', e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none bg-white text-sm"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white"
             >
               {BUILDING_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
             </select>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Müteahhit / Yüklenici<span className="text-red-500 ml-1">*</span></label>
-            <input required type="text" value={formData.contractor_name} onChange={e => set('contractor_name', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Örn: ABC İnşaat A.Ş." />
+            <label className="block text-sm font-medium text-slate-700 mb-1">Müteahhit / Yüklenici<span className="text-red-500 ml-1">*</span></label>
+            <input required type="text" value={formData.contractor_name} onChange={e => set('contractor_name', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Örn: ABC İnşaat A.Ş." />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Yapı Denetim Firması<span className="text-red-500 ml-1">*</span></label>
-            <input required type="text" value={formData.inspection_firm_name} onChange={e => set('inspection_firm_name', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Örn: XYZ Yapı Denetim" />
+            <label className="block text-sm font-medium text-slate-700 mb-1">Yapı Denetim Firması<span className="text-red-500 ml-1">*</span></label>
+            <input required type="text" value={formData.inspection_firm_name} onChange={e => set('inspection_firm_name', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Örn: XYZ Yapı Denetim" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Kontrol Sorumlusu<span className="text-red-500 ml-1">*</span></label>
-            <input required type="text" value={formData.inspector_name} onChange={e => set('inspector_name', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm" placeholder="Adı Soyadı" />
+            <label className="block text-sm font-medium text-slate-700 mb-1">Kontrol Sorumlusu<span className="text-red-500 ml-1">*</span></label>
+            <input required type="text" value={formData.inspector_name} onChange={e => set('inspector_name', e.target.value)} className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white" placeholder="Adı Soyadı" />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Genel Not</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Genel Not</label>
             <textarea
               rows={2}
               value={formData.general_note}
               onChange={e => set('general_note', e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm resize-none"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm text-slate-900 bg-white resize-none"
               placeholder="İsteğe bağlı notlar..."
             />
           </div>

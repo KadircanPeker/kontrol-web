@@ -38,7 +38,7 @@ export default function Dashboard({ initialProjects: projects }: { initialProjec
   return (
     <>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Yapi Kontrol Merkezi</h1>
+        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Yapi Kontrol Merkezi</h1>
         <button 
           onClick={openNewModal}
           className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-medium transition-all shadow-lg shadow-blue-200"
@@ -52,27 +52,27 @@ export default function Dashboard({ initialProjects: projects }: { initialProjec
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects?.map((project: any) => (
-          <div key={project.id} className="group relative bg-white rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] border border-blue-50/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col h-full">
+          <div key={project.id} className="group relative bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md hover:border-blue-200 transition-all flex flex-col h-full">
             <Link href={`/project/${project.id}`} className="flex-1 block outline-none">
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold text-gray-800 line-clamp-1 pr-4">{project.name}</h3>
+                <h3 className="text-xl font-bold text-slate-900 line-clamp-1 pr-4">{project.name}</h3>
                 <span className="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs font-semibold whitespace-nowrap shrink-0">
                   {project.building_type}
                 </span>
               </div>
               
               <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm text-gray-500">
-                  <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  <span className="font-medium text-gray-700">{project.city} / {project.district}</span>
+                <div className="flex items-center text-sm text-slate-500">
+                  <svg className="w-4 h-4 mr-2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  <span className="font-medium text-slate-700">{project.city} / {project.district}</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-500">
-                  <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                  <span className="font-medium text-gray-700 line-clamp-1">{project.contractor_name || 'Belirtilmemiş'}</span>
+                <div className="flex items-center text-sm text-slate-500">
+                  <svg className="w-4 h-4 mr-2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                  <span className="font-medium text-slate-700 line-clamp-1">{project.contractor_name || 'Belirtilmemiş'}</span>
                 </div>
               </div>
   
-              <div className="pt-4 border-t border-gray-50 mt-auto">
+              <div className="pt-4 border-t border-slate-100 mt-auto">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Tamamlanma</span>
                   <span className="text-sm font-bold text-blue-600">% {project.completion_percentage.toFixed(0)}</span>
@@ -104,14 +104,14 @@ export default function Dashboard({ initialProjects: projects }: { initialProjec
         ))}
 
         {(!projects || projects.length === 0) && (
-          <div className="col-span-full flex flex-col items-center justify-center py-20 bg-white rounded-2xl border border-dashed border-gray-300">
+          <div className="col-span-full flex flex-col items-center justify-center py-20 bg-white rounded-2xl border border-dashed border-slate-300">
             <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 text-blue-500">
               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-1">Henüz proje yok</h3>
-            <p className="text-gray-500 text-center max-w-sm mb-6">Sisteme henüz hiç proje eklenmemiş. Yeni bir proje oluşturarak hemen denetimlere başlayın.</p>
+            <h3 className="text-lg font-medium text-slate-900 mb-1">Henüz proje yok</h3>
+            <p className="text-slate-500 text-center max-w-sm mb-6">Sisteme henüz hiç proje eklenmemiş. Yeni bir proje oluşturarak hemen denetimlere başlayın.</p>
             <button onClick={openNewModal} className="text-blue-600 font-medium hover:underline">Yeni Proje Ekle</button>
           </div>
         )}
