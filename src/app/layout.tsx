@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Yapi Kontrol Merkezi",
   description: "Yapi Kontrol Merkezi Yönetim Paneli",
-  colorScheme: "light",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      style={{ colorScheme: 'light' }}
+      style={{ colorScheme: 'dark' }}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
